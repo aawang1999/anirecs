@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+  <h1 class="result-title">Similar to "{{ anime_title }}"</h1>
+  <form class="form" method="POST" action="/">
+    <input class="input" type="text" name="anime_title" placeholder="Search anime..." required />
+    <button class="submit" type="submit">Search</button>
+  </form>
+  <div class="result-container">
+    {% for anime in recommend_list %}
+    <div class="card">
+      <div class="cover">
+        <img class="image" src="{{ anime['image'] }}">
+      </div>
+      <form class="card-form" action="/" method="post">
+        <h3 class="name" name="card_anime_title">{{ anime['name'] }}</h3>
+        <div class="rating">Rating: {{ anime['rating'] }}</div>
+        <div class="card-button-container">
+          <button class="card-info-button">Info</button>
+          <button class="card-similar-button" value="{{ anime['name'] }}" type="submit"
+            name="search_by_card">Similar</button>
+        </div>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

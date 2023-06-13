@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="search">
+  <div class="container">
+    <h1 class="title">Anime Recommender</h1>
+    <div>
+      <form class="form" method="POST" action="/">
+        <input class="input" type="text" name="anime_title" placeholder="Search anime..." required />
+        <button class="submit" type="submit">Search</button>
+      </form>
+    </div>
+    {% block error %}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}
